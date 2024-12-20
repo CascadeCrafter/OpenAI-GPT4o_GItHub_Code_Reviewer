@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "A backend REST API to automate code reviews using OpenAI and GitHub APIs."
+authors = ["SimoMarvaila <simomarvaila0915@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.6"
+openai = "^1.58.1"
+pydantic = "^2.10.4"
+uvicorn = "^0.34.0"
+python-dotenv = "^1.0.1"
+httpx = "^0.28.1"
+
+[tool.poetry.dev-dependencies]
+black = "^24.10.0"
+flake8 = "^7.1.1"
+isort = "^5.13.2"
+pre-commit = "^4.0.1"
+pytest = "^8.3.4"
+pytest-httpx = "^0.35.0"
+pytest-cov = "^6.0.0"
+pytest-asyncio = "^0.25.0"
+
+[tool.poetry.scripts]
+start = "app.main:main"
+
+[build-system]
+requires = ["poetry-core>=1.8.2"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto"
+
+[tool.isort]
+line_length = 88
+profile = "black"
+known_third_party = ["fastapi", "pydantic", "httpx", "openai"]
